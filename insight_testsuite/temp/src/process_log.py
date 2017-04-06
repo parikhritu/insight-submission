@@ -162,13 +162,15 @@ def popular_times():
 
 ##################################################################
 # function calls
-##################################################################
+##################################################################	
 top10_active_hosts()
 top10_consumed_resources()
 top10_busiest_60mins()
 security_breaches()
 busiest_datetimes()
 popular_times()
+
+
 
 
 
