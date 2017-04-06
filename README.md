@@ -12,11 +12,10 @@ This feature identifies which mutually exclusive 60 min chunks see the most volu
 
 The code is commented in detail. The following libraries are used:
 	<br />
-    import pandas as pd <br />
-    import numpy as np <br />
-    from datetime import datetime as dt <br />
-    import datetime <br />
-    import time <br />
+    pandas <br />
+    numpy <br />
+    datetime <br />
+    time <br />
 
 Thanks!
 Ritu Parikh
