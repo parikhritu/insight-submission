@@ -19,3 +19,7 @@ The code is commented in detail. The following libraries are used:
 
 Thanks!
 Ritu Parikh
+
+
+
+*** I made a last minute change to the code yesterday (adding exception catching instead of encoding the data on import). Reverting back to the orginial encoding to ensure there are no missed instances. ****

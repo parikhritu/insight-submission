@@ -12,16 +12,7 @@ start_time = time.time()
 ##################################################################
 # importing and cleaning the data 
 ##################################################################
-while True:
-	try:
-		df = pd.read_table('log_input/log.txt', delim_whitespace=True, na_values=('-'), usecols=[0,3,5,6,7], names=('Host','TimeStamp','Request','Code','Bytes'), dtype={'Code': object, 'Bytes': object})
-	except (UnicodeDecodeError, IndexError):
-		print('some dirty public data')
-		pass
-	else:
-		print("Completed data input ------ %s seconds" % (time.time() - start_time))
-		break
-
+df = pd.read_table('log_input/log.txt', delim_whitespace=True, na_values=('-'), usecols=[0,3,5,6,7], names=('Host','TimeStamp','Request','Code','Bytes'), dtype={'Code': object, 'Bytes': object}, encoding='iso-8859-1')
 df.loc[:,5]=  pd.to_datetime(df['TimeStamp'], format='[%d/%b/%Y:%H:%M:%S') 
 print("Completed date format translation ------ %s seconds" % (time.time() - start_time))
 
@@ -89,7 +80,7 @@ def top10_busiest_60mins():
 	df_top10=pd.DataFrame({'Hour':filled.index, 'Tally':filled.values.astype(int)})[:10] #extract timestamp from index
 	df_top10['Hour']=printing_datetime_format(df_top10['Hour'],0) #format timestamp for output format
 	df_top10.to_csv('log_output/hours.txt',index=False, header=False)
-	print("Completed feature 4: Top 10 busiest 60 minutes ------ %s seconds" % (time.time() - start_time))
+	print("Completed feature 3: Top 10 busiest 60 minutes ------ %s seconds" % (time.time() - start_time))
 
 def security_breaches():
 	df401size=df[df['Code'] == '401'].groupby([5,'Host']).size().reset_index(level=0) #for 401 errors, groupby time and host, make host index
